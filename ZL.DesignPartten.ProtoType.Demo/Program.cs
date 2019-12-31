@@ -15,6 +15,7 @@ namespace ZL.DesignPartten.ProtoType.Demo
                 Name = "Start",
                 NodeType = "start"
             };
+            beginNode.Parent = workflow;
             var inputNode = new Node
             {
                 Name = "Input",
@@ -53,7 +54,7 @@ namespace ZL.DesignPartten.ProtoType.Demo
             Console.WriteLine("应该修改为开始");
             Console.WriteLine(workflow.Nodes[0].Name);
             Console.WriteLine("");
-            var newworkflow = workflow.Clone();
+            var newworkflow = workflow.Clone_v0();
             Console.WriteLine("输出克隆对象的第一个节点的名称");
             Console.WriteLine(newworkflow.Nodes[0].Name);
             Console.WriteLine("通过连接引用修改开始节点的名称");
@@ -61,6 +62,16 @@ namespace ZL.DesignPartten.ProtoType.Demo
             Console.WriteLine("名称没有被修改，说明Clone时Link中的每个节点创建了新的对象");
             Console.WriteLine(newworkflow.Links[0].Source.Name);
             Console.WriteLine(newworkflow.Nodes[0].Name);
+
+            Console.WriteLine("");
+            var newworkflow1 = workflow.Clone();
+            Console.WriteLine("输出克隆对象的第一个节点的名称");
+            Console.WriteLine(newworkflow1.Nodes[0].Name);
+            Console.WriteLine("通过连接引用修改开始节点的名称");
+            newworkflow1.Links[0].Source.Name = "Start";
+            Console.WriteLine("名称相同,说明指向相同的节点");
+            Console.WriteLine(newworkflow1.Links[0].Source.Name);
+            Console.WriteLine(newworkflow1.Nodes[0].Name);
 
             Console.ReadLine();
         }
