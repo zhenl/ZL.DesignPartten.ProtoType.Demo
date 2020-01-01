@@ -61,5 +61,10 @@ namespace ZL.DesignPartten.ProtoType.Demo
             return newFlow;
 
         }
+
+        public Workflow Clone_v1()
+        {
+            return this.MemberwiseClone() as Workflow;
+        }
     }
 }

@@ -48,6 +48,13 @@ namespace ZL.DesignPartten.ProtoType.Demo
             workflow.Links.Add(linkStartToInput);
             workflow.Links.Add(linkinputNodeToEnd);
 
+            var nw1 = workflow.Clone_v1();
+
+            if (nw1.Nodes[0] == null) Console.WriteLine("浅复制不能复制子对象");
+            else {
+                Console.WriteLine(nw1.Nodes[0].Name);
+            }
+
             Console.WriteLine("比较节点集合中的对象与连接中引用的对象，看是否相同");
             Console.WriteLine(workflow.Nodes[0] == workflow.Links[0].Source);
             Console.WriteLine("");
