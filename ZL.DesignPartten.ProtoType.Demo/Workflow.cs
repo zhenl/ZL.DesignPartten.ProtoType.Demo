@@ -24,7 +24,7 @@ namespace ZL.DesignPartten.ProtoType.Demo
         /// 最初的版本，仅序列化/反序列化就返回。序列化和反序列化不能区分相同的对象引用，因此会创建新的实例
         /// </summary>
         /// <returns></returns>
-        public Workflow Clone_v0()
+        public Workflow Clone_Serialize()
         {
             //将实体类序列化为JSON
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(this);
@@ -41,7 +41,12 @@ namespace ZL.DesignPartten.ProtoType.Demo
         /// <returns></returns>
         public Workflow Clone()
         {
-            var newFlow=Clone_v0();
+            var newFlow=Clone_Serialize();
+
+            foreach(var node in newFlow.Nodes)
+            {
+                node.Parent = newFlow;
+            }
 
             foreach (var link in newFlow.Links)
             {
@@ -62,7 +67,7 @@ namespace ZL.DesignPartten.ProtoType.Demo
 
         }
 
-        public Workflow Clone_v1()
+        public Workflow Clone_Memberwise()
         {
             return this.MemberwiseClone() as Workflow;
         }
