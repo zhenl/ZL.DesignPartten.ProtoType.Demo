@@ -90,17 +90,17 @@ namespace ZL.DesignPartten.ProtoType.Demo
 
             workflow.Name = "工作流_V0";
 
-            var beginNode = new Node
+            var beginNode = new Node_v0
             {
                 Name = "Start",
                 NodeType = "start"
             };
-            var inputNode = new Node
+            var inputNode = new Node_v0
             {
                 Name = "Input",
                 NodeType = "Normal"
             };
-            var endNode = new Node
+            var endNode = new Node_v0
             {
                 Name = "End",
                 NodeType = "end",
