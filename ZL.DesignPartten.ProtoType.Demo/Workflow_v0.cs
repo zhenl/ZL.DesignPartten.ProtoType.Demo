@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ZL.DesignPartten.ProtoType.Demo
 {
@@ -19,6 +17,10 @@ namespace ZL.DesignPartten.ProtoType.Demo
             
         }
 
+        /// <summary>
+        /// 使用序列化的方法实现深复制
+        /// </summary>
+        /// <returns></returns>
         public Workflow_v0 Clone_Serialize()
         {
             //将实体类序列化为JSON
@@ -30,6 +32,10 @@ namespace ZL.DesignPartten.ProtoType.Demo
             return newFlow;
         }
 
+        /// <summary>
+        /// 使用Memberwise浅复制
+        /// </summary>
+        /// <returns></returns>
         public Workflow_v0 Clone_Memberwise()
         {
             return this.MemberwiseClone() as Workflow_v0;
